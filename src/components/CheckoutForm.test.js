@@ -16,14 +16,12 @@ test("form header renders", () => {
 test("form shows success message on submit with form details", async() => {
   //Arrange
   render(<CheckoutForm />)
-
   const firstNameInput = screen.getByLabelText(/first name/i)
   const lastNameInput = screen.getByLabelText(/last name/i)
   const addressInput = screen.getByLabelText(/address/i)
   const cityInput = screen.getByLabelText(/city/i)
   const stateInput = screen.getByLabelText(/state/i)
   const zipInput = screen.getByLabelText(/zip/i)
-
   const button = screen.getByRole("button")
 
   //Act
@@ -33,9 +31,7 @@ test("form shows success message on submit with form details", async() => {
   userEvent.type(cityInput, "Asbury Park")
   userEvent.type(stateInput, "NJ")
   userEvent.type(zipInput, "00000")
-
   userEvent.click(button)
-
 
   //Assert
   await waitFor(() => {
