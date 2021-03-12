@@ -14,7 +14,7 @@ test("form header renders", () => {
 });
 
 test("form shows success message on submit with form details", async() => {
-  //Arrange
+  //Arrange - Define necessary preconditions and inputs
   render(<CheckoutForm />)
   const firstNameInput = screen.getByLabelText(/first name/i)
   const lastNameInput = screen.getByLabelText(/last name/i)
@@ -24,7 +24,7 @@ test("form shows success message on submit with form details", async() => {
   const zipInput = screen.getByLabelText(/zip/i)
   const button = screen.getByRole("button")
 
-  //Act
+  //Act - Perform events on object being tested
   userEvent.type(firstNameInput, "Nardwuar")
   userEvent.type(lastNameInput, "the Human Serviette")
   userEvent.type(addressInput, "309 Kingizz Ln")
@@ -33,7 +33,7 @@ test("form shows success message on submit with form details", async() => {
   userEvent.type(zipInput, "00000")
   userEvent.click(button)
 
-  //Assert
+  //Assert - Check that results are as expected
   await waitFor(() => {
     const successMessage = screen.getByTestId("successMessage")
     expect(successMessage).toBeInTheDocument()
